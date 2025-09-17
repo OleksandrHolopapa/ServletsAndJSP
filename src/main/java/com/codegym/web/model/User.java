@@ -1,5 +1,7 @@
 package com.codegym.web.model;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 public class User {
   private Long id;
   private String firstName;
@@ -24,6 +26,21 @@ public class User {
     this.email = email;
     this.age = age;
   }
+
+    public void fillUserFieldsFromRequest(HttpServletRequest req) {
+        String idStr = req.getParameter("id");
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+        String email = req.getParameter("email");
+        int age = Integer.parseInt(req.getParameter("age"));
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
+
+        if (idStr != null) this.id = Long.parseLong(idStr);
+    }
 
   public Long getId() {
     return id;
