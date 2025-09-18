@@ -55,4 +55,34 @@ class UserTest {
         assertEquals("bob.williams@example.com", user.getEmail());
         assertEquals(35, user.getAge());
     }
+    
+    @Test
+    void shouldTestEmptyConstructor() {
+        User user = new User();
+        assertNull(user.getId());
+        assertNull(user.getFirstName());
+        assertNull(user.getLastName());
+        assertNull(user.getEmail());
+        assertEquals(0, user.getAge());
+    }
+
+    @Test
+    void shouldTestFourArgsConstructor() {
+        User user = new User("John", "Doe", "john@doe.com", 30);
+        assertNull(user.getId());
+        assertEquals("John", user.getFirstName());
+        assertEquals("Doe", user.getLastName());
+        assertEquals("john@doe.com", user.getEmail());
+        assertEquals(30, user.getAge());
+    }
+
+    @Test
+    void shouldTestFiveArgsConstructor() {
+        User user = new User(1L, "John", "Doe", "john@doe.com", 30);
+        assertEquals(1L, user.getId().longValue());
+        assertEquals("John", user.getFirstName());
+        assertEquals("Doe", user.getLastName());
+        assertEquals("john@doe.com", user.getEmail());
+        assertEquals(30, user.getAge());
+    }
 }
